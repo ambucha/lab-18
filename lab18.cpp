@@ -130,6 +130,8 @@ void output(Node * hd){
         cout << "\t> Review #" << count << ": " << current->rating << ": " << current->comment << endl;
         current = current->next;
     }
+    // display avg
+    cout << "\t> Average: " << avg(hd) << endl;
     cout << endl;
 }
 
@@ -151,7 +153,7 @@ void pushfront(Node *&hd, double r, string c){
     }
 }
 
-void pushback(Node *&hd, double r, string c){\
+void pushback(Node *&hd, double r, string c){
     Node *newNode = new Node;
 
     // set the new nodes data
@@ -177,12 +179,24 @@ void pushback(Node *&hd, double r, string c){\
 
 double avg(Node *hd){
     Node* current = hd;
+
+    // variables for the ammount in the list and total sum
     int count = 0;
-    double sum;
+    double sum = 0;
+
+    // go through each value and add it to the sum
     while(current){
         sum += current->rating;
         current = current->next;
         count++;
     }
-    return sum / count;
+
+    // return avg
+    if(count != 0){
+        return sum / count;
+    }
+    // if list is empty return 0
+    else {
+        return count;
+    }
 }
