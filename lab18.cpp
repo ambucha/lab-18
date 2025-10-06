@@ -30,17 +30,23 @@ void pushback(Node *, int, string);
 void pushback(Node *, int, string);
 
 int main(){
+    //variables
     Node *head = nullptr;
+    int method;
+    int rating;
+    string comment; 
 
     // ask for if to push to front or back
-    int method;
     cout << "Which linked list method should we use?" << endl;
     cout << "[1] New nodes are added at the head of the linked list" << endl;
     cout << "[2] New nodes are added at the tail of the linked list" << endl;
-    cout << "Choice: " << endl;
+    cout << "Choice: ";
     cin >> method;
 
+    // Check for chosen method (and if neither is chosen)
     if(method == 1){
+        // ask for review rating and comment
+        cout << "";
 
     }
     else if(method == 2) {
