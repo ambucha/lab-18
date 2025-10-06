@@ -20,14 +20,14 @@ struct Node{
 void output(Node *);
 
 // pushback(): pushes value to the back of the linked list
-// arguments: pointer to node, value, comment
+// arguments: pointer to node, value, comment (i need to pass by reference for the poitner)
 // returns: nothing
-void pushback(Node *, double, string);
+void pushback(Node *&, double, string);
 
 // pushfront(): pushes value to the front of the linked list
 // arguments: pointer to node, value, comment
 // returns: nothing
-void pushfront(Node *, double, string);
+void pushfront(Node *&, double, string);
 
 int main(){
     //variables
@@ -110,19 +110,43 @@ int main(){
 }
 
 void output(Node * hd){
+    // Check to see if list is empty
     if (!hd){
-        cout << "Empty list\n";
+        cout << "Empty list" << endl;
         return;
     }
+
     int count = 1;
     Node * current = hd;
+
+    // Loop through the reviews
+    cout << "Outputting all reviews:" << endl;
+    while (current){
+        cout << "\t> Review #" << count << ": " << current->rating << ": " << current->comment << endl;
+        current = current->next;
+    }
+    cout << endl;
 }
 
-void pushback(Node * hd, double r, string c){
+void pushfront(Node *&hd, double r, string c){
+    Node *newNode = new Node;
 
+    //adds a node at head
+    if(!hd){
+        hd = newNode;
+        newNode->next = nullptr;
+        newNode->rating = r;
+        newNode->comment = c;
+    }
+    else {
+        newNode->next = hd;
+        newNode->rating = r;
+        newNode->comment = c;
+        hd = newNode;
+    }
 }
 
-void pushfront(Node * hd, double r, string c){
+void pushback(Node *&hd, double r, string c){
 
 }
 
