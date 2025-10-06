@@ -146,7 +146,27 @@ void pushfront(Node *&hd, double r, string c){
     }
 }
 
-void pushback(Node *&hd, double r, string c){
+void pushback(Node *&hd, double r, string c){\
+    Node *newNode = new Node;
 
+    // set the new nodes data
+    newNode->rating = r;
+    newNode->comment = c;
+    newNode->next = nullptr;
+
+    // check if the list is empty
+    if(!hd){
+        hd = newNode;
+        return;
+    }
+
+    //if not empty then walk to the tail
+    Node *current = hd;
+    while(current->next){
+        current = current->next;
+    }
+
+    // Now add the new node to the tail
+    current->next = newNode;
 }
 
