@@ -129,6 +129,7 @@ void output(Node * hd){
     while (current){
         cout << "\t> Review #" << count << ": " << current->rating << ": " << current->comment << endl;
         current = current->next;
+        count++;
     }
     // display avg
     cout << "\t> Average: " << avg(hd) << endl;
