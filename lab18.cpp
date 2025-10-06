@@ -29,6 +29,11 @@ void pushback(Node *&, double, string);
 // returns: nothing
 void pushfront(Node *&, double, string);
 
+// avg(): gets the avg of the ratings in the list
+// arguments: pointer to node
+// returns: nothing
+double avg(Node *);
+
 int main(){
     //variables
     Node *head = nullptr;
@@ -170,3 +175,14 @@ void pushback(Node *&hd, double r, string c){\
     current->next = newNode;
 }
 
+double avg(Node *hd){
+    Node* current = hd;
+    int count = 0;
+    double sum;
+    while(current){
+        sum += current->rating;
+        current = current->next;
+        count++;
+    }
+    return sum / count;
+}
